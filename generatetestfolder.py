@@ -59,7 +59,6 @@ class Generator:
 
         return len(paragraphs.split(' '))
 
-
 def main(base = "./"):
     g = Generator(base)
     g.files.sort

@@ -19,9 +19,9 @@ function getFiles(base, allFiles) {
 }
 
 
-var x = getFiles('./testfiles/');
+var x = getFiles('./boopa');
 
 var interval = setInterval(function() {
-  console.log(x);
+  //console.log(x);
   if (x.length > 4) clearInterval(interval);
-}, 50);
+}, 1);

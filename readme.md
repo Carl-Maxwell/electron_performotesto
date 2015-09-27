@@ -1,21 +1,22 @@
 
 
+
 ## howto work upon the stuff
 
-the testfiles were generated using the commands
+The testfiles were generated using the commands
 
 ```bash
-touch `name`
+mkdir testfolder
+python generatetestfolder.py testfolder
 ```
+
+This generates 100 files in a random directory structure, with around 100,000
+words of lorem ipsum between them all.
+
+## install pip dependencies
 
 ```bash
-mkdir `name`
+pip install -r pip-requirements.txt
 ```
 
-Applied repeatedly by hand. Name is a [python script](https://github.com/treyhunner/names) you can install with
-
-```bash
-sudo pip install name
-```
-
-or the like.
+Or something like that
