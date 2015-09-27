@@ -1,7 +1,7 @@
 var fs = require('fs');
 
 function getFiles(base, allFiles) {
-  //allFiles = allFiles || [];
+  allFiles = allFiles || [];
 
   fs.readdir(base, function(err, files) {
     files.forEach(function(file) {
@@ -19,9 +19,7 @@ function getFiles(base, allFiles) {
 }
 
 
-var x = [];
-
-getFiles('./testfiles/', x);
+var x = getFiles('./testfiles/');
 
 var interval = setInterval(function() {
   console.log(x);
