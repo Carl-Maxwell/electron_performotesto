@@ -1,8 +1,8 @@
-from names import get_last_name
-from random import random, choice
-from os import utime, mkdir
-from os.path import exists
-
+from loremipsum import get_paragraph
+from names      import get_last_name
+from os         import mkdir, utime
+from os.path    import exists
+from random     import choice, random
 import sys
 
 class Generator:
@@ -10,13 +10,16 @@ class Generator:
         if base[-1] == "/":
             base = base[0:-1]
 
-        self.files = []
+        self.files   = []
         self.folders = [base]
 
         while len(self.files) < 100:
             self.generate()
         self.files.sort()
-        self.files = map(lambda x: x.replace('//', '/'), self.files)
+
+        wordcount = 0
+        while wordcount < 100000:
+            wordcount += self.fill()
 
     def name(self, path):
         return path + "/" + get_last_name().lower()
@@ -43,6 +46,19 @@ class Generator:
 
         self.touch(self.name(path))
         self.mkdir(self.name(path))
+
+    def fill(self):
+        paragraphs = ''
+
+        for i in range(1 + int(random()*5)):
+            paragraphs += get_paragraph() + " \n"
+
+        file = open(choice(self.files), 'a+')
+        file.write(paragraphs)
+        file.close()
+
+        return len(paragraphs.split(' '))
+
 
 def main(base = "./"):
     g = Generator(base)
